@@ -208,7 +208,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://takpap.github.io/2021/07/01/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://takpap.github.io/2021/07/02/hello-next/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -222,7 +222,87 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/01/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2021/07/02/hello-next/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-02 02:14:43 / 修改时间：02:16:03" itemprop="dateCreated datePublished" datetime="2021-07-02T02:14:43+08:00">2021-07-02</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>777</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Quick-Config"><a href="#Quick-Config" class="headerlink" title="Quick Config"></a>Quick Config</h2><h3 id="添加分类-标签-关于模块"><a href="#添加分类-标签-关于模块" class="headerlink" title="添加分类/标签/关于模块"></a>添加分类/标签/关于模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">$ hexo new page tags</span><br><span class="line">$ hexo new page about</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加搜索模块"><a href="#添加搜索模块" class="headerlink" title="添加搜索模块"></a>添加搜索模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add hexo-generator-searchdb</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启搜索</span></span><br><span class="line">local_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加网站动画-背景效果"><a href="#添加网站动画-背景效果" class="headerlink" title="添加网站动画/背景效果"></a>添加网站动画/背景效果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># JavaScript 3D library.</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-three <span class="built_in">source</span>/lib/three</span><br><span class="line"><span class="comment"># Canvas-ribbon</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-canvas-ribbon <span class="built_in">source</span>/lib/canvas-ribbon</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启效果</span></span><br><span class="line"><span class="comment"># 3D 动画</span></span><br><span class="line">three:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  three_waves: <span class="literal">false</span></span><br><span class="line">  canvas_lines: <span class="literal">true</span></span><br><span class="line">  canvas_sphere: <span class="literal">false</span></span><br><span class="line"><span class="comment"># 随机绸缎背景</span></span><br><span class="line">canvas_ribbon:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  size: 200 <span class="comment"># The width of the ribbon</span></span><br><span class="line">  alpha: 0.22 <span class="comment"># The transparency of the ribbon</span></span><br><span class="line">  zIndex: -1 <span class="comment"># The display level of the ribbon</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加文章字数统计与预估阅读时间"><a href="#添加文章字数统计与预估阅读时间" class="headerlink" title="添加文章字数统计与预估阅读时间"></a>添加文章字数统计与预估阅读时间</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启</span></span><br><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: <span class="literal">true</span></span><br><span class="line">  item_text_post: <span class="literal">true</span></span><br><span class="line">  item_text_total: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://takpap.github.io/2021/07/01/hello-hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Takpap">
+      <meta itemprop="description" content="Strive && Lucky">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="歪艾斯扣丁">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/01/hello-hexo/" class="post-title-link" itemprop="url">Hello World</a>
         </h2>
 
         <div class="post-meta">
@@ -234,6 +314,13 @@
 
               <time title="创建时间：2021-07-01 21:55:15" itemprop="dateCreated datePublished" datetime="2021-07-01T21:55:15+08:00">2021-07-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-02 02:15:49" itemprop="dateModified" datetime="2021-07-02T02:15:49+08:00">2021-07-02</time>
+              </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -354,7 +441,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -399,7 +486,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">0k</span>
+    <span title="站点总字数">1k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
