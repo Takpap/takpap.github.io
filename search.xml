@@ -19,7 +19,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title>Hello Next</title>
     <url>/2021/07/02/hello-next/</url>
     <content><![CDATA[<h2 id="Quick-Config"><a href="#Quick-Config" class="headerlink" title="Quick Config"></a>Quick Config</h2><h3 id="添加分类-标签-关于模块"><a href="#添加分类-标签-关于模块" class="headerlink" title="添加分类/标签/关于模块"></a>添加分类/标签/关于模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">$ hexo new page tags</span><br><span class="line">$ hexo new page about</span><br></pre></td></tr></table></figure>
 
