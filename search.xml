@@ -13,7 +13,7 @@
 <h2 id="path-对象"><a href="#path-对象" class="headerlink" title="path 对象"></a>path 对象</h2><h3 id="repalceInline"><a href="#repalceInline" class="headerlink" title="repalceInline"></a>repalceInline</h3><p>作用：替换节点，该方法接收一个参数，如果参数不为数组，那等同于<code>replaceWith</code>；如果参数是一个数组，那么等同于<code>replaceWithMultiple</code></p>
 <h3 id="insertBefore-insertAfter"><a href="#insertBefore-insertAfter" class="headerlink" title="insertBefore | insertAfter"></a>insertBefore | insertAfter</h3><p>作用：插入节点</p>
 <h3 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h3><p>作用：删除节点</p>
-]]></content>
+<h2 id="利用-AST-实现代码混淆"><a href="#利用-AST-实现代码混淆" class="headerlink" title="利用 AST 实现代码混淆"></a>利用 AST 实现代码混淆</h2>]]></content>
   </entry>
   <entry>
     <title>Hello World</title>
