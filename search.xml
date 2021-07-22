@@ -16,6 +16,37 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2021/07/01/hello-hexo/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello Next</title>
+    <url>/2021/07/02/hello-next/</url>
+    <content><![CDATA[<h2 id="Quick-Config"><a href="#Quick-Config" class="headerlink" title="Quick Config"></a>Quick Config</h2><h3 id="添加分类-标签-关于模块"><a href="#添加分类-标签-关于模块" class="headerlink" title="添加分类/标签/关于模块"></a>添加分类/标签/关于模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">$ hexo new page tags</span><br><span class="line">$ hexo new page about</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加搜索模块"><a href="#添加搜索模块" class="headerlink" title="添加搜索模块"></a>添加搜索模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-generator-searchdb</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启搜索</span></span><br><span class="line">local_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加网站动画-背景效果"><a href="#添加网站动画-背景效果" class="headerlink" title="添加网站动画/背景效果"></a>添加网站动画/背景效果</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># JavaScript 3D library.</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-three <span class="built_in">source</span>/lib/three</span><br><span class="line"><span class="comment"># Canvas-ribbon</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-canvas-ribbon <span class="built_in">source</span>/lib/canvas-ribbon</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启效果</span></span><br><span class="line"><span class="comment"># 3D 动画</span></span><br><span class="line">three:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  three_waves: <span class="literal">false</span></span><br><span class="line">  canvas_lines: <span class="literal">true</span></span><br><span class="line">  canvas_sphere: <span class="literal">false</span></span><br><span class="line"><span class="comment"># 随机绸缎背景</span></span><br><span class="line">canvas_ribbon:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  size: 200 <span class="comment"># The width of the ribbon</span></span><br><span class="line">  alpha: 0.22 <span class="comment"># The transparency of the ribbon</span></span><br><span class="line">  zIndex: -1 <span class="comment"># The display level of the ribbon</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加文章字数统计与预估阅读时间"><a href="#添加文章字数统计与预估阅读时间" class="headerlink" title="添加文章字数统计与预估阅读时间"></a>添加文章字数统计与预估阅读时间</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启</span></span><br><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: <span class="literal">true</span></span><br><span class="line">  item_text_post: <span class="literal">true</span></span><br><span class="line">  item_text_total: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
     <title>JavaScript 混淆那些事儿</title>
     <url>/2021/07/08/JavaScript%E6%B7%B7%E6%B7%86%E9%82%A3%E4%BA%9B%E4%BA%8B/</url>
     <content><![CDATA[<p><a href="https://obfuscator.io/">ob 在线混淆</a></p>
@@ -58,37 +89,6 @@
 
 <h2 id="逗号表达式混淆"><a href="#逗号表达式混淆" class="headerlink" title="逗号表达式混淆"></a>逗号表达式混淆</h2><p>主要作用是把多个表达式或者语句连接成一个复合语句，会返回最后一个表达式的值</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item=<span class="number">0</span>; item&lt;<span class="number">10</span>; item++)</span><br><span class="line">  <span class="built_in">console</span>.log(item),</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`index1: <span class="subst">$&#123;item&#125;</span>`</span>),  </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`index2: <span class="subst">$&#123;item&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// --------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;yang&#x27;</span>,</span><br><span class="line">    <span class="attr">add</span>: <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">        reutrn a + b</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sub</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a - b</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">var</span> b = sub(a, <span class="number">3000</span>) +<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> c = b + obj.add(b, <span class="number">2000</span>)</span><br><span class="line">    <span class="keyword">return</span> c + obj.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// test 函数中的前两句可以处理为：b =  ( a = 1000, sub ) ( a, 3000 ) + 1</span></span><br><span class="line"><span class="comment">// test 函数可以处理为：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b, c</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b =  ( a = <span class="number">1000</span>, sub ) ( a, <span class="number">3000</span> ) + <span class="number">1</span>,</span><br><span class="line">    	c = b + obj.add(b, <span class="number">2000</span>)</span><br><span class="line">    	c + obj.name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/07/01/hello-hexo/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello Next</title>
-    <url>/2021/07/02/hello-next/</url>
-    <content><![CDATA[<h2 id="Quick-Config"><a href="#Quick-Config" class="headerlink" title="Quick Config"></a>Quick Config</h2><h3 id="添加分类-标签-关于模块"><a href="#添加分类-标签-关于模块" class="headerlink" title="添加分类/标签/关于模块"></a>添加分类/标签/关于模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">$ hexo new page tags</span><br><span class="line">$ hexo new page about</span><br></pre></td></tr></table></figure>
-
-<h3 id="添加搜索模块"><a href="#添加搜索模块" class="headerlink" title="添加搜索模块"></a>添加搜索模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-generator-searchdb</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启搜索</span></span><br><span class="line">local_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="添加网站动画-背景效果"><a href="#添加网站动画-背景效果" class="headerlink" title="添加网站动画/背景效果"></a>添加网站动画/背景效果</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># JavaScript 3D library.</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-three <span class="built_in">source</span>/lib/three</span><br><span class="line"><span class="comment"># Canvas-ribbon</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-canvas-ribbon <span class="built_in">source</span>/lib/canvas-ribbon</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启效果</span></span><br><span class="line"><span class="comment"># 3D 动画</span></span><br><span class="line">three:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  three_waves: <span class="literal">false</span></span><br><span class="line">  canvas_lines: <span class="literal">true</span></span><br><span class="line">  canvas_sphere: <span class="literal">false</span></span><br><span class="line"><span class="comment"># 随机绸缎背景</span></span><br><span class="line">canvas_ribbon:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  size: 200 <span class="comment"># The width of the ribbon</span></span><br><span class="line">  alpha: 0.22 <span class="comment"># The transparency of the ribbon</span></span><br><span class="line">  zIndex: -1 <span class="comment"># The display level of the ribbon</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="添加文章字数统计与预估阅读时间"><a href="#添加文章字数统计与预估阅读时间" class="headerlink" title="添加文章字数统计与预估阅读时间"></a>添加文章字数统计与预估阅读时间</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启</span></span><br><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: <span class="literal">true</span></span><br><span class="line">  item_text_post: <span class="literal">true</span></span><br><span class="line">  item_text_total: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
   </entry>
