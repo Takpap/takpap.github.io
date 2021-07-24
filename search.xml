@@ -1,52 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>AST那些事</title>
-    <url>/2021/07/15/AST/</url>
-    <content><![CDATA[<h2 id="Babel-库"><a href="#Babel-库" class="headerlink" title="Babel 库"></a>Babel 库</h2><p><code>@babel/core</code> babel 核心库</p>
-<p><code>@babel/parser</code> 将代码解析为 AST 语法树</p>
-<p><code>@babel/types</code> AST 节点类型处理</p>
-<p><code>@babel/traverse</code> AST 树节点遍历</p>
-<p><code>@babel/generator</code> AST 节点转换为代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> parser = <span class="built_in">require</span>(<span class="string">&#x27;@babel/parser&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> traverse = <span class="built_in">require</span>(<span class="string">&#x27;@babel/traverse&#x27;</span>).default</span><br><span class="line"><span class="keyword">const</span> types = <span class="built_in">require</span>(<span class="string">&#x27;@babel/types&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> generator = <span class="built_in">require</span>(<span class="string">&#x27;@babel/generator&#x27;</span>).default</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> jscode = fs.readFileSync(<span class="string">&#x27;./ast_demo_one.js&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">encoding</span>: <span class="string">&#x27;utf-8&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ast = parser.parse(jscode)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> visitor = &#123;</span><br><span class="line">    <span class="function"><span class="title">StringLiteral</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">        path.replace</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">traverse(ast, visitor)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> code = generator(ast).code</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(code)</span><br></pre></td></tr></table></figure>
-
-<h2 id="path-对象"><a href="#path-对象" class="headerlink" title="path 对象"></a>path 对象</h2><h3 id="repalceInline"><a href="#repalceInline" class="headerlink" title="repalceInline"></a>repalceInline</h3><p>作用：替换节点，该方法接收一个参数，如果参数不为数组，那等同于<code>replaceWith</code>；如果参数是一个数组，那么等同于<code>replaceWithMultiple</code></p>
-<h3 id="insertBefore-insertAfter"><a href="#insertBefore-insertAfter" class="headerlink" title="insertBefore | insertAfter"></a>insertBefore | insertAfter</h3><p>作用：插入节点</p>
-<h3 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h3><p>作用：删除节点</p>
-<h2 id="利用-AST-实现代码混淆"><a href="#利用-AST-实现代码混淆" class="headerlink" title="利用 AST 实现代码混淆"></a>利用 AST 实现代码混淆</h2>]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/07/01/hello-hexo/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello Next</title>
-    <url>/2021/07/02/hello-next/</url>
-    <content><![CDATA[<h2 id="Quick-Config"><a href="#Quick-Config" class="headerlink" title="Quick Config"></a>Quick Config</h2><h3 id="添加分类-标签-关于模块"><a href="#添加分类-标签-关于模块" class="headerlink" title="添加分类/标签/关于模块"></a>添加分类/标签/关于模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">$ hexo new page tags</span><br><span class="line">$ hexo new page about</span><br></pre></td></tr></table></figure>
-
-<h3 id="添加搜索模块"><a href="#添加搜索模块" class="headerlink" title="添加搜索模块"></a>添加搜索模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-generator-searchdb</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启搜索</span></span><br><span class="line">local_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="添加网站动画-背景效果"><a href="#添加网站动画-背景效果" class="headerlink" title="添加网站动画/背景效果"></a>添加网站动画/背景效果</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># JavaScript 3D library.</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-three <span class="built_in">source</span>/lib/three</span><br><span class="line"><span class="comment"># Canvas-ribbon</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-canvas-ribbon <span class="built_in">source</span>/lib/canvas-ribbon</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启效果</span></span><br><span class="line"><span class="comment"># 3D 动画</span></span><br><span class="line">three:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  three_waves: <span class="literal">false</span></span><br><span class="line">  canvas_lines: <span class="literal">true</span></span><br><span class="line">  canvas_sphere: <span class="literal">false</span></span><br><span class="line"><span class="comment"># 随机绸缎背景</span></span><br><span class="line">canvas_ribbon:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  size: 200 <span class="comment"># The width of the ribbon</span></span><br><span class="line">  alpha: 0.22 <span class="comment"># The transparency of the ribbon</span></span><br><span class="line">  zIndex: -1 <span class="comment"># The display level of the ribbon</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="添加文章字数统计与预估阅读时间"><a href="#添加文章字数统计与预估阅读时间" class="headerlink" title="添加文章字数统计与预估阅读时间"></a>添加文章字数统计与预估阅读时间</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启</span></span><br><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: <span class="literal">true</span></span><br><span class="line">  item_text_post: <span class="literal">true</span></span><br><span class="line">  item_text_total: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
     <title>JavaScript 混淆那些事儿</title>
     <url>/2021/07/08/JavaScript%E6%B7%B7%E6%B7%86%E9%82%A3%E4%BA%9B%E4%BA%8B/</url>
     <content><![CDATA[<p><a href="https://obfuscator.io/">ob 在线混淆</a></p>
@@ -93,6 +47,21 @@
 ]]></content>
   </entry>
   <entry>
+    <title>AST那些事</title>
+    <url>/2021/07/15/AST/</url>
+    <content><![CDATA[<h2 id="Babel-库"><a href="#Babel-库" class="headerlink" title="Babel 库"></a>Babel 库</h2><p><code>@babel/core</code> babel 核心库</p>
+<p><code>@babel/parser</code> 将代码解析为 AST 语法树</p>
+<p><code>@babel/types</code> AST 节点类型处理</p>
+<p><code>@babel/traverse</code> AST 树节点遍历</p>
+<p><code>@babel/generator</code> AST 节点转换为代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> parser = <span class="built_in">require</span>(<span class="string">&#x27;@babel/parser&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> traverse = <span class="built_in">require</span>(<span class="string">&#x27;@babel/traverse&#x27;</span>).default</span><br><span class="line"><span class="keyword">const</span> types = <span class="built_in">require</span>(<span class="string">&#x27;@babel/types&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> generator = <span class="built_in">require</span>(<span class="string">&#x27;@babel/generator&#x27;</span>).default</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> jscode = fs.readFileSync(<span class="string">&#x27;./ast_demo_one.js&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">encoding</span>: <span class="string">&#x27;utf-8&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ast = parser.parse(jscode)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> visitor = &#123;</span><br><span class="line">    <span class="function"><span class="title">StringLiteral</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">        path.replace</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">traverse(ast, visitor)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> code = generator(ast).code</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(code)</span><br></pre></td></tr></table></figure>
+
+<h2 id="path-对象"><a href="#path-对象" class="headerlink" title="path 对象"></a>path 对象</h2><h3 id="repalceInline"><a href="#repalceInline" class="headerlink" title="repalceInline"></a>repalceInline</h3><p>作用：替换节点，该方法接收一个参数，如果参数不为数组，那等同于<code>replaceWith</code>；如果参数是一个数组，那么等同于<code>replaceWithMultiple</code></p>
+<h3 id="insertBefore-insertAfter"><a href="#insertBefore-insertAfter" class="headerlink" title="insertBefore | insertAfter"></a>insertBefore | insertAfter</h3><p>作用：插入节点</p>
+<h3 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h3><p>作用：删除节点</p>
+<h2 id="利用-AST-实现代码混淆"><a href="#利用-AST-实现代码混淆" class="headerlink" title="利用 AST 实现代码混淆"></a>利用 AST 实现代码混淆</h2>]]></content>
+  </entry>
+  <entry>
     <title></title>
     <url>/2021/07/22/dfsd/</url>
     <content><![CDATA[<h2 id="快速激活-Sublime-Text-4-4113"><a href="#快速激活-Sublime-Text-4-4113" class="headerlink" title="快速激活 Sublime Text 4 4113"></a>快速激活 Sublime Text 4 4113</h2><p>接上贴 sublime 更新到了<code>Sublime Text 4107</code> 版本，接着上贴对最新版本进行修改激活</p>
@@ -104,5 +73,36 @@
 <p>0.0.0.0 sublimetext.com<br>0.0.0.0 license.sublimehq.com<br>0.0.0.0 45.55.255.55 #sublimetext<br>0.0.0.0 45.55.41.223 #sublimetext</p>
 </blockquote>
 <h3 id="Enjoy-it"><a href="#Enjoy-it" class="headerlink" title="Enjoy it !"></a>Enjoy it !</h3>]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/07/01/hello-hexo/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello Next</title>
+    <url>/2021/07/02/hello-next/</url>
+    <content><![CDATA[<h2 id="Quick-Config"><a href="#Quick-Config" class="headerlink" title="Quick Config"></a>Quick Config</h2><h3 id="添加分类-标签-关于模块"><a href="#添加分类-标签-关于模块" class="headerlink" title="添加分类/标签/关于模块"></a>添加分类/标签/关于模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">$ hexo new page tags</span><br><span class="line">$ hexo new page about</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加搜索模块"><a href="#添加搜索模块" class="headerlink" title="添加搜索模块"></a>添加搜索模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-generator-searchdb</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启搜索</span></span><br><span class="line">local_search:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加网站动画-背景效果"><a href="#添加网站动画-背景效果" class="headerlink" title="添加网站动画/背景效果"></a>添加网站动画/背景效果</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># JavaScript 3D library.</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-three <span class="built_in">source</span>/lib/three</span><br><span class="line"><span class="comment"># Canvas-ribbon</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-canvas-ribbon <span class="built_in">source</span>/lib/canvas-ribbon</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启效果</span></span><br><span class="line"><span class="comment"># 3D 动画</span></span><br><span class="line">three:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  three_waves: <span class="literal">false</span></span><br><span class="line">  canvas_lines: <span class="literal">true</span></span><br><span class="line">  canvas_sphere: <span class="literal">false</span></span><br><span class="line"><span class="comment"># 随机绸缎背景</span></span><br><span class="line">canvas_ribbon:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  size: 200 <span class="comment"># The width of the ribbon</span></span><br><span class="line">  alpha: 0.22 <span class="comment"># The transparency of the ribbon</span></span><br><span class="line">  zIndex: -1 <span class="comment"># The display level of the ribbon</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加文章字数统计与预估阅读时间"><a href="#添加文章字数统计与预估阅读时间" class="headerlink" title="添加文章字数统计与预估阅读时间"></a>添加文章字数统计与预估阅读时间</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启</span></span><br><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: <span class="literal">true</span></span><br><span class="line">  item_text_post: <span class="literal">true</span></span><br><span class="line">  item_text_total: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
   </entry>
 </search>
