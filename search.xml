@@ -47,19 +47,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2021/07/22/dfsd/</url>
-    <content><![CDATA[<h2 id="快速激活-Sublime-Text-4-4113"><a href="#快速激活-Sublime-Text-4-4113" class="headerlink" title="快速激活 Sublime Text 4 4113"></a>快速激活 Sublime Text 4 4113</h2><p>接上贴 sublime 更新到了<code>Sublime Text 4107</code> 版本，接着上贴对最新版本进行修改激活</p>
-<h3 id="1-找到你电脑上的-sublime-text-exe-文件"><a href="#1-找到你电脑上的-sublime-text-exe-文件" class="headerlink" title="1. 找到你电脑上的 sublime_text.exe 文件"></a>1. 找到你电脑上的 <code>sublime_text.exe</code> 文件</h3><h3 id="2-用十六进制编辑器打开-sublime-text-exe-文件"><a href="#2-用十六进制编辑器打开-sublime-text-exe-文件" class="headerlink" title="2. 用十六进制编辑器打开 sublime_text.exe 文件"></a>2. 用十六进制编辑器打开 <code>sublime_text.exe</code> 文件</h3><p>如果电脑没有安装十六进制编辑器，请用 <a href="https://hexed.it/">hexed</a> 在线十六进制编辑器打开，</p>
-<p>查找以下字节 <code>C3 C6 01 00 C3</code> 把它改成 <code>C3 C6 01 01 C3</code> </p>
-<p>查找以下字节 <code>51 31 C0 88 05</code> 把它改成 <code>51 b0 01 88 05</code> </p>
-<p>然后保存并替换旧的 <code>sublime_text.exe</code> 文件</p>
-<h3 id="3-编辑-host-文件屏蔽更新检测"><a href="#3-编辑-host-文件屏蔽更新检测" class="headerlink" title="3. 编辑 host 文件屏蔽更新检测"></a>3. 编辑 <code>host</code> 文件屏蔽更新检测</h3><blockquote>
-<p>0.0.0.0 sublimetext.com<br>0.0.0.0 license.sublimehq.com<br>0.0.0.0 45.55.255.55 #sublimetext<br>0.0.0.0 45.55.41.223 #sublimetext</p>
-</blockquote>
-<h3 id="Enjoy-it"><a href="#Enjoy-it" class="headerlink" title="Enjoy it !"></a>Enjoy it !</h3>]]></content>
-  </entry>
-  <entry>
     <title>JavaScript 混淆那些事儿</title>
     <url>/2021/07/08/JavaScript%E6%B7%B7%E6%B7%86%E9%82%A3%E4%BA%9B%E4%BA%8B/</url>
     <content><![CDATA[<p><a href="https://obfuscator.io/">ob 在线混淆</a></p>
@@ -104,5 +91,18 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item=<span class="number">0</span>; item&lt;<span class="number">10</span>; item++)</span><br><span class="line">  <span class="built_in">console</span>.log(item),</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`index1: <span class="subst">$&#123;item&#125;</span>`</span>),  </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`index2: <span class="subst">$&#123;item&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// --------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;yang&#x27;</span>,</span><br><span class="line">    <span class="attr">add</span>: <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">        reutrn a + b</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sub</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a - b</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">var</span> b = sub(a, <span class="number">3000</span>) +<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> c = b + obj.add(b, <span class="number">2000</span>)</span><br><span class="line">    <span class="keyword">return</span> c + obj.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// test 函数中的前两句可以处理为：b =  ( a = 1000, sub ) ( a, 3000 ) + 1</span></span><br><span class="line"><span class="comment">// test 函数可以处理为：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b, c</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b =  ( a = <span class="number">1000</span>, sub ) ( a, <span class="number">3000</span> ) + <span class="number">1</span>,</span><br><span class="line">    	c = b + obj.add(b, <span class="number">2000</span>)</span><br><span class="line">    	c + obj.name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2021/07/22/dfsd/</url>
+    <content><![CDATA[<h2 id="快速激活-Sublime-Text-4-4113"><a href="#快速激活-Sublime-Text-4-4113" class="headerlink" title="快速激活 Sublime Text 4 4113"></a>快速激活 Sublime Text 4 4113</h2><p>接上贴 sublime 更新到了<code>Sublime Text 4107</code> 版本，接着上贴对最新版本进行修改激活</p>
+<h3 id="1-找到你电脑上的-sublime-text-exe-文件"><a href="#1-找到你电脑上的-sublime-text-exe-文件" class="headerlink" title="1. 找到你电脑上的 sublime_text.exe 文件"></a>1. 找到你电脑上的 <code>sublime_text.exe</code> 文件</h3><h3 id="2-用十六进制编辑器打开-sublime-text-exe-文件"><a href="#2-用十六进制编辑器打开-sublime-text-exe-文件" class="headerlink" title="2. 用十六进制编辑器打开 sublime_text.exe 文件"></a>2. 用十六进制编辑器打开 <code>sublime_text.exe</code> 文件</h3><p>如果电脑没有安装十六进制编辑器，请用 <a href="https://hexed.it/">hexed</a> 在线十六进制编辑器打开，</p>
+<p>查找以下字节 <code>C3 C6 01 00 C3</code> 把它改成 <code>C3 C6 01 01 C3</code> </p>
+<p>查找以下字节 <code>51 31 C0 88 05</code> 把它改成 <code>51 b0 01 88 05</code> </p>
+<p>然后保存并替换旧的 <code>sublime_text.exe</code> 文件</p>
+<h3 id="3-编辑-host-文件屏蔽更新检测"><a href="#3-编辑-host-文件屏蔽更新检测" class="headerlink" title="3. 编辑 host 文件屏蔽更新检测"></a>3. 编辑 <code>host</code> 文件屏蔽更新检测</h3><blockquote>
+<p>0.0.0.0 sublimetext.com<br>0.0.0.0 license.sublimehq.com<br>0.0.0.0 45.55.255.55 #sublimetext<br>0.0.0.0 45.55.41.223 #sublimetext</p>
+</blockquote>
+<h3 id="Enjoy-it"><a href="#Enjoy-it" class="headerlink" title="Enjoy it !"></a>Enjoy it !</h3>]]></content>
   </entry>
 </search>
