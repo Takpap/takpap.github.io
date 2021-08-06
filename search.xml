@@ -80,17 +80,9 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2021/07/22/dfsd/</url>
-    <content><![CDATA[<h2 id="快速激活-Sublime-Text-4-4113"><a href="#快速激活-Sublime-Text-4-4113" class="headerlink" title="快速激活 Sublime Text 4 4113"></a>快速激活 Sublime Text 4 4113</h2><p>接上贴 sublime 更新到了<code>Sublime Text 4107</code> 版本，接着上贴对最新版本进行修改激活</p>
-<h3 id="1-找到你电脑上的-sublime-text-exe-文件"><a href="#1-找到你电脑上的-sublime-text-exe-文件" class="headerlink" title="1. 找到你电脑上的 sublime_text.exe 文件"></a>1. 找到你电脑上的 <code>sublime_text.exe</code> 文件</h3><h3 id="2-用十六进制编辑器打开-sublime-text-exe-文件"><a href="#2-用十六进制编辑器打开-sublime-text-exe-文件" class="headerlink" title="2. 用十六进制编辑器打开 sublime_text.exe 文件"></a>2. 用十六进制编辑器打开 <code>sublime_text.exe</code> 文件</h3><p>如果电脑没有安装十六进制编辑器，请用 <a href="https://hexed.it/">hexed</a> 在线十六进制编辑器打开，</p>
-<p>查找以下字节 <code>C3 C6 01 00 C3</code> 把它改成 <code>C3 C6 01 01 C3</code> </p>
-<p>查找以下字节 <code>51 31 C0 88 05</code> 把它改成 <code>51 b0 01 88 05</code> </p>
-<p>然后保存并替换旧的 <code>sublime_text.exe</code> 文件</p>
-<h3 id="3-编辑-host-文件屏蔽更新检测"><a href="#3-编辑-host-文件屏蔽更新检测" class="headerlink" title="3. 编辑 host 文件屏蔽更新检测"></a>3. 编辑 <code>host</code> 文件屏蔽更新检测</h3><blockquote>
-<p>0.0.0.0 sublimetext.com<br>0.0.0.0 license.sublimehq.com<br>0.0.0.0 45.55.255.55 #sublimetext<br>0.0.0.0 45.55.41.223 #sublimetext</p>
-</blockquote>
-<h3 id="Enjoy-it"><a href="#Enjoy-it" class="headerlink" title="Enjoy it !"></a>Enjoy it !</h3>]]></content>
+    <title>Vue3 语法快速入门</title>
+    <url>/2021/08/05/Vue3/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Hello Next</title>
@@ -102,6 +94,14 @@
 <h3 id="添加网站动画-背景效果"><a href="#添加网站动画-背景效果" class="headerlink" title="添加网站动画/背景效果"></a>添加网站动画/背景效果</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># JavaScript 3D library.</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-three <span class="built_in">source</span>/lib/three</span><br><span class="line"><span class="comment"># Canvas-ribbon</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-canvas-ribbon <span class="built_in">source</span>/lib/canvas-ribbon</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启效果</span></span><br><span class="line"><span class="comment"># 3D 动画</span></span><br><span class="line">three:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  three_waves: <span class="literal">false</span></span><br><span class="line">  canvas_lines: <span class="literal">true</span></span><br><span class="line">  canvas_sphere: <span class="literal">false</span></span><br><span class="line"><span class="comment"># 随机绸缎背景</span></span><br><span class="line">canvas_ribbon:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  size: 200 <span class="comment"># The width of the ribbon</span></span><br><span class="line">  alpha: 0.22 <span class="comment"># The transparency of the ribbon</span></span><br><span class="line">  zIndex: -1 <span class="comment"># The display level of the ribbon</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="添加文章字数统计与预估阅读时间"><a href="#添加文章字数统计与预估阅读时间" class="headerlink" title="添加文章字数统计与预估阅读时间"></a>添加文章字数统计与预估阅读时间</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line"><span class="comment"># _config.yml 配置文件开启</span></span><br><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: <span class="literal">true</span></span><br><span class="line">  item_text_post: <span class="literal">true</span></span><br><span class="line">  item_text_total: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>一些配置文件</title>
+    <url>/2021/08/06/%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>vscode</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;vetur.format.defaultFormatterOptions&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;prettier&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;arrowParens&quot;</span>: <span class="string">&quot;avoid&quot;</span>, <span class="comment">// 箭头函数单参数简化</span></span><br><span class="line">    <span class="string">&quot;semi&quot;</span>: <span class="literal">false</span>, <span class="comment">//不加分号</span></span><br><span class="line">    <span class="string">&quot;singleQuote&quot;</span>: <span class="literal">true</span>, <span class="comment">//用单引号</span></span><br><span class="line">    <span class="string">&quot;bracketSpacing&quot;</span>: <span class="literal">true</span>, <span class="comment">// 对象空格</span></span><br><span class="line">    <span class="string">&quot;htmlWhitespaceSensitivity&quot;</span>: <span class="string">&quot;ignore&quot;</span>,</span><br><span class="line">    <span class="string">&quot;endOfLine&quot;</span>: <span class="string">&quot;lf&quot;</span>,</span><br><span class="line">    <span class="string">&quot;trailingComma&quot;</span>: <span class="string">&quot;none&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;prettier.arrowParens&quot;</span>: <span class="string">&quot;avoid&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.semi&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.singleQuote&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">&quot;prettier.htmlWhitespaceSensitivity&quot;</span>: <span class="string">&quot;ignore&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.requireConfig&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.trailingComma&quot;</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.useEditorConfig&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.vueIndentScriptAndStyle&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">&quot;[jsonc]&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;editor.defaultFormatter&quot;</span>: <span class="string">&quot;esbenp.prettier-vscode&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
   </entry>
