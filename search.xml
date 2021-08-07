@@ -80,11 +80,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Vue3 语法快速入门</title>
-    <url>/2021/08/05/Vue3/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Hello Next</title>
     <url>/2021/07/02/hello-next/</url>
     <content><![CDATA[<h2 id="Quick-Config"><a href="#Quick-Config" class="headerlink" title="Quick Config"></a>Quick Config</h2><h3 id="添加分类-标签-关于模块"><a href="#添加分类-标签-关于模块" class="headerlink" title="添加分类/标签/关于模块"></a>添加分类/标签/关于模块</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">$ hexo new page tags</span><br><span class="line">$ hexo new page about</span><br></pre></td></tr></table></figure>
@@ -104,5 +99,10 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;vetur.format.defaultFormatterOptions&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;prettier&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;arrowParens&quot;</span>: <span class="string">&quot;avoid&quot;</span>, <span class="comment">// 箭头函数单参数简化</span></span><br><span class="line">    <span class="string">&quot;semi&quot;</span>: <span class="literal">false</span>, <span class="comment">//不加分号</span></span><br><span class="line">    <span class="string">&quot;singleQuote&quot;</span>: <span class="literal">true</span>, <span class="comment">//用单引号</span></span><br><span class="line">    <span class="string">&quot;bracketSpacing&quot;</span>: <span class="literal">true</span>, <span class="comment">// 对象空格</span></span><br><span class="line">    <span class="string">&quot;htmlWhitespaceSensitivity&quot;</span>: <span class="string">&quot;ignore&quot;</span>,</span><br><span class="line">    <span class="string">&quot;endOfLine&quot;</span>: <span class="string">&quot;lf&quot;</span>,</span><br><span class="line">    <span class="string">&quot;trailingComma&quot;</span>: <span class="string">&quot;none&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;prettier.arrowParens&quot;</span>: <span class="string">&quot;avoid&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.semi&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.singleQuote&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">&quot;prettier.htmlWhitespaceSensitivity&quot;</span>: <span class="string">&quot;ignore&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.requireConfig&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.trailingComma&quot;</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.useEditorConfig&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.vueIndentScriptAndStyle&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">&quot;[jsonc]&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;editor.defaultFormatter&quot;</span>: <span class="string">&quot;esbenp.prettier-vscode&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+  </entry>
+  <entry>
+    <title>Vue3 语法快速入门</title>
+    <url>/2021/08/05/Vue3/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
