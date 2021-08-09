@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Vue3 语法快速入门</title>
-    <url>/2021/08/05/Vue3/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>AST那些事</title>
     <url>/2021/07/15/AST/</url>
     <content><![CDATA[<h2 id="Babel-库"><a href="#Babel-库" class="headerlink" title="Babel 库"></a>Babel 库</h2><p><code>@babel/core</code> babel 核心库</p>
@@ -19,14 +14,6 @@
 <h3 id="insertBefore-insertAfter"><a href="#insertBefore-insertAfter" class="headerlink" title="insertBefore | insertAfter"></a>insertBefore | insertAfter</h3><p>作用：插入节点</p>
 <h3 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h3><p>作用：删除节点</p>
 <h2 id="利用-AST-实现代码混淆"><a href="#利用-AST-实现代码混淆" class="headerlink" title="利用 AST 实现代码混淆"></a>利用 AST 实现代码混淆</h2>]]></content>
-  </entry>
-  <entry>
-    <title>一些配置文件</title>
-    <url>/2021/08/06/%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<p>vscode</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;vetur.format.defaultFormatterOptions&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;prettier&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;arrowParens&quot;</span>: <span class="string">&quot;avoid&quot;</span>, <span class="comment">// 箭头函数单参数简化</span></span><br><span class="line">    <span class="string">&quot;semi&quot;</span>: <span class="literal">false</span>, <span class="comment">//不加分号</span></span><br><span class="line">    <span class="string">&quot;singleQuote&quot;</span>: <span class="literal">true</span>, <span class="comment">//用单引号</span></span><br><span class="line">    <span class="string">&quot;bracketSpacing&quot;</span>: <span class="literal">true</span>, <span class="comment">// 对象空格</span></span><br><span class="line">    <span class="string">&quot;htmlWhitespaceSensitivity&quot;</span>: <span class="string">&quot;ignore&quot;</span>,</span><br><span class="line">    <span class="string">&quot;endOfLine&quot;</span>: <span class="string">&quot;lf&quot;</span>,</span><br><span class="line">    <span class="string">&quot;trailingComma&quot;</span>: <span class="string">&quot;none&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;prettier.arrowParens&quot;</span>: <span class="string">&quot;avoid&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.semi&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.singleQuote&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">&quot;prettier.htmlWhitespaceSensitivity&quot;</span>: <span class="string">&quot;ignore&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.requireConfig&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.trailingComma&quot;</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.useEditorConfig&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.vueIndentScriptAndStyle&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">&quot;[jsonc]&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;editor.defaultFormatter&quot;</span>: <span class="string">&quot;esbenp.prettier-vscode&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
   </entry>
   <entry>
     <title>JavaScript 混淆那些事儿</title>
@@ -90,6 +77,19 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Vue3 语法快速入门</title>
+    <url>/2021/08/05/Vue3/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>一些配置文件</title>
+    <url>/2021/08/06/%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>vscode</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;vetur.format.defaultFormatterOptions&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;prettier&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;arrowParens&quot;</span>: <span class="string">&quot;avoid&quot;</span>, <span class="comment">// 箭头函数单参数简化</span></span><br><span class="line">    <span class="string">&quot;semi&quot;</span>: <span class="literal">false</span>, <span class="comment">//不加分号</span></span><br><span class="line">    <span class="string">&quot;singleQuote&quot;</span>: <span class="literal">true</span>, <span class="comment">//用单引号</span></span><br><span class="line">    <span class="string">&quot;bracketSpacing&quot;</span>: <span class="literal">true</span>, <span class="comment">// 对象空格</span></span><br><span class="line">    <span class="string">&quot;htmlWhitespaceSensitivity&quot;</span>: <span class="string">&quot;ignore&quot;</span>,</span><br><span class="line">    <span class="string">&quot;endOfLine&quot;</span>: <span class="string">&quot;lf&quot;</span>,</span><br><span class="line">    <span class="string">&quot;trailingComma&quot;</span>: <span class="string">&quot;none&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;prettier.arrowParens&quot;</span>: <span class="string">&quot;avoid&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.semi&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.singleQuote&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">&quot;prettier.htmlWhitespaceSensitivity&quot;</span>: <span class="string">&quot;ignore&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.requireConfig&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.trailingComma&quot;</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line"><span class="string">&quot;prettier.useEditorConfig&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;prettier.vueIndentScriptAndStyle&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">&quot;[jsonc]&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;editor.defaultFormatter&quot;</span>: <span class="string">&quot;esbenp.prettier-vscode&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
   </entry>
   <entry>
