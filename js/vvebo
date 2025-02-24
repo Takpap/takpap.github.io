@@ -55,7 +55,7 @@ if (url.includes("users/show")) {
   url = url
     .replace("statuses/user_timeline", "profile/statuses/tab")
     .replace("max_id", "since_id");
-  url = url + `&containerid=230413${uid}_-_WEIBO_SECOND_PROFILE_WEIBO_ORI`;
+  url = url + `&containerid=230413${uid}_-_WEIBO_SECOND_PROFILE_WEIBO`;
   console.log('takpap timeline3', uid);
   console.log(url);
   $done({
