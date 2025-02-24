@@ -8,7 +8,7 @@ if (url.includes("remind/unread_count")) {
 } else if (url.includes("statuses/user_timeline")) {
   let uid = getUid(url) || $prefs.valueForKey("uid") || '1807812760';
   url = url.replace("statuses/user_timeline", "profile/statuses/tab").replace("max_id", "since_id");
-  url = url + `&containerid=230413${uid}_-_WEIBO_SECOND_PROFILE_WEIBO`;
+  url = url + `&containerid=230413${uid}_-_WEIBO_SECOND_PROFILE_WEIBO_ORI`;
   console.log('takpap444444');
   console.log(url);
   $done({ url });
