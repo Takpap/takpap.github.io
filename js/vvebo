@@ -51,12 +51,12 @@ if (url.includes("users/show")) {
     console.log("修正失败，请联系GitHub：bin64 ");
   }
 } else if (url.includes("statuses/user_timeline")) {
-  console.log('takpap timeline');
-  let uid = getUid(url) || $prefs.valueForKey("weibouid");
+  let uid = getUid(url) || $prefs.valueForKey("weibouid") || '1807812760';
   url = url
     .replace("statuses/user_timeline", "profile/statuses/tab")
     .replace("max_id", "since_id");
   url = url + `&containerid=230413${uid}_-_WEIBO_SECOND_PROFILE_WEIBO_ORI`;
+  console.log('takpap timeline1', url);
   $done({
     url,
   });
