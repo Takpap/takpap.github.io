@@ -102,25 +102,21 @@ proxy-groups:
   - icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Static.png
     name: PROXY
     type: select
-    proxies:
-      - PROXY
+    include-all: true
 
   - name: CURSOR
     type: select
-    proxies:
-      - PROXY
+    include-all: true
 
   - icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png
     name: AIGC
     type: select
-    proxies:
-      - PROXY
+    include-all: true
 
   - icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png
     name: Telegram
     type: select
-    proxies:
-      - PROXY
+    include-all: true
 
   - icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Global.png
     include-all: true
@@ -142,8 +138,6 @@ rules:
   - "RULE-SET,steam,PROXY"
   - "RULE-SET,telegram_domain,Telegram"
   - "RULE-SET,telegram_ip,Telegram"
-  - "RULE-SET,google_domain,Google"
-  - "RULE-SET,google_ip,Google"
   - "RULE-SET,geolocation-!cn,PROXY"
   - "RULE-SET,cn_domain,DIRECT"
   - "RULE-SET,cn_ip,DIRECT"
