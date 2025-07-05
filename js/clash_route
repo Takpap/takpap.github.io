@@ -102,17 +102,25 @@ proxy-groups:
   - icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Static.png
     name: PROXY
     type: select
+    proxies:
+      - PROXY
 
   - name: CURSOR
     type: select
+    proxies:
+      - PROXY
 
   - icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/OpenAI.png
     name: AIGC
     type: select
+    proxies:
+      - PROXY
 
   - icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Telegram.png
     name: Telegram
     type: select
+    proxies:
+      - PROXY
 
   - icon: https://testingcf.jsdelivr.net/gh/Orz-3/mini@master/Color/Global.png
     include-all: true
