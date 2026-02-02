@@ -1,0 +1,700 @@
+hostname = api-access.pangolin-sdk-toutiao.com, mi.gdt.qq.com, open.e.kuaishou.com, app.dsx.ac, sdk.alibaba.com.ailbaba.me, adservice.sigmob.cn, *.v2ex.com, sapphire.api.microsoftapp.net, assets.msn.com, api.msn.com, gql-fed.reddit.com, client.app.coc.10086.cn, app.10086.cn, mobile.12306.cn, ads.twitter.com, api.m.jd.com, *.jddebug.com, bdsp-x.jd.com, dsp-x.jd.com, storage.360buyimg.com, img*.360buyimg.com, in.m.jd.com, apapia-sqk-weblogic.manmanbuy.com, acs.m.goofish.com, g-acs.m.goofish.com, acs.m.taobao.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, apimobile.meituan.com, img.meituan.net, p*.meituan.net, www.meituan.com, s3plus.meituan.net, w.meituan.net, flowplus.meituan.net, portal-portm.meituan.com, sqt.meituan.com, 103.37.155.60, *.dianping.com, p.meituan.com, rms.meituan.com, www.dpfile.com, awp-assets.meituan.net, ddplus.meituan.net, mall.meituan.com, api.pinduoduo.com, api.yangkeduo.com, mobile.yangkeduo.com, xxyx-client-api.xiaoxiaoyouxuan.com,  cdn.sdb.com.cn, rsb.pingan.com.cn, weixin110.qq.com, security.wechat.com, mp.weixin.qq.com, m5.amap.com, m5-zb.amap.com, center.amap.com, amap-aos-info-nogw.amap.com, -broadcast.chat.bilibili.com, -cm.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net, app.bilibili.com, api.live.bilibili.com, *.bilibili.com, *.bili*.*, *.bilibili.*, grpc.biliapi.net, *biliapi.net, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, interface*.music.163.com, *.xiaohongshu.com, sns-img-hw.xhscdn.com, app-api.smzdm.com, *.zdmimg.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, *.kuwo.cn, *.lrts.me, mc.tencentmusic.com, m.nivod4.tv, *.pipix.com, api.cdmcaac.com, app.variflight.com, iphone.ac.qq.com, gab.122.gov.cn, cds.wifi188.com, zlsdk.1rtb.net, web2.realtech-inc.com, sdk.1rtb.net, gw.xiaocantech.com, www.inoreader.com, apps.teamair.cn
+
+# > 快手联盟,优量汇,穿山甲「广告联盟」
+# hostname = api-access.pangolin-sdk-toutiao.com, mi.gdt.qq.com, open.e.kuaishou.com
+^https:\/\/(api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk\/get_ads|open\.e\.kuaishou\.com\/rest\/e\/v3\/open\/univ$|mi\.gdt\.qq\.com\/gdt_mview\.fcg\?) url script-response-body https://raw.githubusercontent.com/app2smile/rules/master/js/adsense.js
+
+# 影视类APP
+# IOS伪装影视APP净化（by ddgksf2013）
+# https://raw.githubusercontent.com/ddgksf2013/Rewrite/refs/heads/master/AdBlock/FakeiOSAds.conf
+# hostname = app.dsx.ac
+# ✅ juzhi
+^http:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,4}(:\d+)?\/api\/v\d\/config\/getConfigList\.do url jsonjq-response-body '.data |= map(select(.keyName | test("config\\.(ad|search|recommend)") | not))'
+# ✅ common
+^http:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,4}(:\d+)?\/.*?\/v\d\/(version|notice\?|top_notice\?|advert\?position=[^2]+) url reject-200
+
+# ✅ 大师兄
+# hostname = sdk.alibaba.com.ailbaba.me, adservice.sigmob.cn
+^https?:\/\/sdk\.alibaba\.com\.ailbaba\.me\/xgapp\.php\/v\d\/version url reject-200
+^https?:\/\/sdk\.alibaba\.com\.ailbaba\.me\/xgapp\.php\/v\d\/advert\?position=[^2]+ url reject-200
+^https?:\/\/sdk\.alibaba\.com\.ailbaba\.me\/xgapp\.php\/v\d\/top_notice\? url reject-200
+^https?:\/\/sdk\.alibaba\.com\.ailbaba\.me\/(dsx|xgapp)\.php\/v\d\/(top_notice\?|version|advert\?position=[^2]+) url reject-200
+^https?:\/\/adservice\.sigmob\.cn\/extconfig url response-body false response-body true
+
+# ✅ V2EX网页去广告（by ddgksf2013）
+^https?:\/\/.*v2ex\.com\/($|t\/\d+) url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/v2ex.js
+
+# ✅ Bing APP 首页简化（by ddgksf2013）
+# https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/BingSimplify.conf
+# hostname = sapphire.api.microsoftapp.net, assets.msn.com, api.msn.com
+# > bing_首页优化@ddgksf2013
+^https?:\/\/sapphire\.api\.microsoftapp\.net\/config\/api\/v1\/get url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/bing.js
+# > bing_位置请求@ddgksf2013
+^https?:\/\/assets\.msn\.com\/service\/weather\/locations\/search url reject-dict
+# > bing_信息流@LE
+^https:\/\/assets\.msn\.com\/service\/news\/feed\/pages\/startmhp url reject-dict
+# > bing_天气请求@ddgksf2013
+^https?:\/\/api\.msn\.com\/weather url reject-dict
+
+# ✅ Reddit增强（by ddgksf2013）
+# https://raw.githubusercontent.com/ddgksf2013/Rewrite/refs/heads/master/AdBlock/RedditAds.conf
+# hostname = gql-fed.reddit.com
+^https?:\/\/gql-fed\.reddit\.com\/$ url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/reddit.js
+
+# ✅ 中国移动 去广告（by zirawell）
+# https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/App/Z/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8/rewrite/10086.conf
+# hostname = client.app.coc.10086.cn, app.10086.cn
+^https?:\/\/(client\.)?app(\.coc)?\.10086\.cn\/biz-orange\/DN\/init\/startInit url reject
+^https?:\/\/(client\.)?app(\.coc)?\.10086\.cn\/biz-orange\/DN\/explorePage\/getAdverList url reject
+^https?:\/\/(client\.)?app(\.coc)?\.10086\.cn\/biz-orange\/DN\/emotionMarket url reject
+
+# ✅ 12306 去广告（by zirawell）
+# https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/App/0-9/12306/rewrite/12306.conf
+# hostname = mobile.12306.cn
+^https?:\/\/mobile\.12306\.cn\/otsmobile\/app\/mgs\/mgw\.htm$ url script-response-header https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/12306.js
+
+# ✅ 拦截 Twitter 的广告内容 
+# hostname = ads.twitter.com
+^https?:\/\/ads\.twitter\.com url reject
+
+# ✅ 京东 去广告（by zirawell）
+# https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/App/J/%E4%BA%AC%E4%B8%9C/rewrite/jd.conf
+# hostname = api.m.jd.com, *.jddebug.com, bdsp-x.jd.com, dsp-x.jd.com, storage.360buyimg.com, img*.360buyimg.com
+# 屏蔽强制更新
+^https?:\/\/api\.m\.jd\.com\/openUpgrade url reject
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?>deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) url script-response-body https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/jd.js
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?>searchBoxWord|xview2Config|stationPullService|getWidget|widget|hybrid|jdDiscoveryRedPoint|queryMaterialAdverts|apollo_style) url reject-200
+^https?:\/\/\w{32}\.jddebug\.com\/diagnose\? url reject
+^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ url reject-200
+^https?:\/\/storage\.360buyimg\.com\/app\.m\.jd\.com\/lottie url reject
+^https?:\/\/storage\.360buyimg\.com\/dynamicConfig\/binary url reject
+^https?:\/\/img\d+\.360buyimg\.com\/jddjadvertise\/ url reject
+
+# ✅ 京东 比价（by wf021325）
+# hostname = in.m.jd.com, apapia-sqk-weblogic.manmanbuy.com
+^https?:\/\/in\.m\.jd\.com\/product\/graphext\/\d+\.html url script-response-body https://raw.githubusercontent.com/wf021325/qx/master/js/jd_price.js
+^https?:\/\/apapia-sqk-weblogic\.manmanbuy\.com\/baoliao\/center\/menu$ url script-request-body https://raw.githubusercontent.com/wf021325/qx/master/js/jd_price.js
+# ^https?:\/\/in\.m\.jd\.com\/product\/graphext\/\d+\.html url script-response-body http://192.168.2.170:8080/jd_price.js
+# ^https?:\/\/apapia-sqk-weblogic\.manmanbuy\.com\/baoliao\/center\/menu$ url script-request-body http://192.168.2.170:8080/jd_price.js
+
+# ✅ 咸鱼净化[墨鱼版]（by ddgksf2013）
+# https://github.com/ddgksf2013/Rewrite/blob/master/AdBlock/GoofishAds.conf
+# hostname = acs.m.goofish.com, g-acs.m.goofish.com
+host-suffix,iyes.youku.com,reject
+
+# > 开屏广告@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.*splash\.ads url reject-200
+# > 首页右下角悬浮球@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.taobao.idle.user.strategy.list url jsonjq-response-body '.data.strategies = [{}]'
+# > 开屏通用广告@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.idle.ad.expose url reject-200
+# > 首页顶部Tab@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.taobao.idlehome.home.circle.list url jsonjq-response-body '.data.circleList |= map(select(.bizCode != "saveMoney"))'
+# > 首页信息流@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.taobao.idlehome.home.nextfresh url jsonjq-response-body '.data.homeTopList |= [ .[0] ] | .data.sections |= map(select(.data.bizType == "item"))'
+# > 搜索填词@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.taobao.idlemtopsearch.search.shade url jsonjq-response-body '.data.singleShadeWords =[{}]'
+# > 猜你可能找@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.taobao.idlemtopsearch.item.search.activate url jsonjq-response-body '.data.cardList = [{}]'
+# > 搜索发现@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.taobao.idlemtopsearch.search.discover url jsonjq-response-body 'del(.data.resultList)'
+# > 我的页面@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.idle.user.page.my.adapter url jsonjq-response-body '.data.ability=[] | .data.container.sections |= map(select(.sectionBizCode | test("head|user|trade")))'
+# > 我的页面信息流处理@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.taobao.idle.item.buy.feeds url jsonjq-response-body 'del(.data.sections)'
+# > 本地信息流AD@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.taobao.idle.local.home url jsonjq-response-body '.data.sections |= map(select(.data.bizType == "item"))'
+# > 搜索结果信息流AD@ddgksf2013
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.taobao.idlemtopsearch.search url jsonjq-response-body '.data.resultList |= map(select(.data.item.main.clickParam.args.biz_type == "item"))'
+# > 商品底部推荐商品信息流AD@ddgksf2013 
+^https?:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop.taobao.idle.item.recommend url jsonjq-response-body '.data.cardList |= map(select(.cardData.bizType != "mamaAD"))'
+# > AMDC处理@ddgksf2013
+^http:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,4}(:\d+)?\/amdc\/mobileDispatch url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amdc.js
+
+# ✅ 淘宝 去广告（by zirawell）
+# https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/App/T/%E6%B7%98%E5%AE%9D/rewrite/taobao.conf
+# hostname = acs.m.taobao.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.etao\.noah\.query\/.+tao_splash url reject
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query\/.+?etao_advertise url reject
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv url reject-dict
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimusic\.common\.mobileservice\.startinit url reject-dict
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.o2o\.ad\.gateway\.get url reject-dict
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.welcome url reject-dict
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.trip\.activity\.querytmsresources url reject-dict
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get) url reject-dict
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get) url script-response-body https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/taobao.js
+^https?:\/\/poplayer\.template\.alibaba\.com\/\w+\.json url script-response-body https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/taobao.js
+
+# ✅ 阿里巴巴 去广告（by zirawell）
+# https://raw.githubusercontent.com/zirawell/app_remove_ads/main/Adblock/A/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4/rewrite/alibaba.conf
+# hostname = acs.m.taobao.com
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv\/ url reject
+
+# ✅ 饿了么 去开屏广告（by ddgksf2013）
+# https://github.com/ddgksf2013/Rewrite/blob/master/AdBlock/StartUp.conf
+# hostname = elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com
+^https?:\/\/elemecdn.com\/.+\/sitemap url reject-200
+^https?:\/\/fuss10.elemecdn.com\/.+\/w\/640\/h\/\d{3,4} url reject-200
+^https?:\/\/fuss10.elemecdn.com\/.+\/w\/750\/h\/\d{3,4} url reject-200
+^https?:\/\/fuss10.elemecdn.com\/.+.mp4 url reject-200
+^https?:\/\/www1.elecfans.com\/www\/delivery\/ url reject-200
+
+# ✅ 美团 去广告（by zirawell）
+# https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/App/M/%E7%BE%8E%E5%9B%A2/rewrite/meituan.conf
+# hostname = apimobile.meituan.com, img.meituan.net, p*.meituan.net, www.meituan.com, s3plus.meituan.net, w.meituan.net, flowplus.meituan.net, portal-portm.meituan.com, sqt.meituan.com
+^https?:\/\/apimobile\.meituan\.com\/appupdate url reject
+^https?:\/\/img\.meituan\.net\/(adunion|display|midas)\/.+\.(gif|jpg)\.webp$ url reject-img
+^https?:\/\/img\.meituan\.net\/groceryimages\/\w+\.gif url reject-img
+^https?:\/\/img\.meituan\.net\/groceryimages\/\w+\.png@220w_220h_1e_1l url reject-img
+^https?:\/\/img\.meituan\.net\/bizad url reject
+^https?:\/\/p\d\.meituan\.net\/movie\/.+?\.jpg\?may_covertWebp url reject-img
+^https?:\/\/p\d\.meituan\.net\/travelcube\/(?!1d4a663|52e9bfc|29a6227|412c4ac|6ee35c4|13bf0bf|ab8692e|6858b1d).+@100w_100h url reject-img
+^https?:\/\/p\d\.meituan\.net\/linglong\/ url script-response-body https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/meituan.js
+^https?:\/\/p\d\.meituan\.net\/(\d+\.\d+\.\d+\/)?wmbanner\/(?!fb51b9d|4e9d3c4).+\.gif url reject-img
+^https?:\/\/p\d\.meituan\.net\/(display|mmc)\/ url reject
+^https?:\/\/apimobile\.meituan\.com\/appupdate\/mach\/checkUpdate? url reject
+^https?:\/\/apimobile\.meituan\.com\/group\/v\d\/recommend\/unity\/recommends url reject
+^https?:\/\/www\.meituan\.com\/api\/v\d\/appstatus\? url reject
+^https?:\/\/(s3plus|flowplus)\.meituan\.net\/v\d\/\w+\/linglong\/.+\.(?>gif|jpg|mp4) url reject-img
+^https?:\/\/s3plus\.meituan\.net\/v\d\/mss_\w+\/waimai-alita\/\w+\.zip$ url reject
+^https?:\/\/s3plus\.meituan\.net\/v\d\/mss_\w+\/brandcpt url reject
+^https?:\/\/w\.meituan\.net\/v\d\/mss_\w+\/waimai-mach\/\d+\/\d+\/pt-im-guider-tip-card url reject
+^https?:\/\/portal-portm\.meituan\.com\/horn_ios url reject-dict
+^https?:\/\/sqt\.meituan\.com\/s\/gateway\/mweb\/api\/marketingResource\/show url reject
+
+# ✅ 大众点评 去广告（by zirawell）
+# https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/App/D/%E5%A4%A7%E4%BC%97%E7%82%B9%E8%AF%84/rewrite/dianping.conf
+# hostname = 103.37.155.60, *.dianping.com, img.meituan.net, p.meituan.com, rms.meituan.com, www.dpfile.com, awp-assets.meituan.net, s3plus.meituan.net, p*.meituan.net, ddplus.meituan.net
+^https?:\/\/103\.37\.155\.60\/fetch url reject
+^https?:\/\/catdot\.dianping\.com\/broker-service\/hijack url reject
+^https?:\/\/mapi\.dianping\.com\/mapi\/operating\/(?>indexopsmodules|loadsplashconfig) url reject
+^https?:\/\/mapi\.dianping\.com\/mapi\/intelliindex url reject-dict
+^https?:\/\/mapi\.dianping\.com\/wdrpreload\/userprediction url reject
+^https?:\/\/mapi\.dianping\.com\/adshopping url reject
+^https?:\/\/img\.meituan\.net\/(?>dpmobile|goodsawardpic)\/ url script-response-body https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/dianping.js
+^https?:\/\/p\.meituan\.com\/api\/privacy\/config url reject
+^https?:\/\/rms\.meituan\.com\/api\/v\d\/rmsmina\/c\/queryWechatAdvertisement url reject-dict
+^https?:\/\/www\.dpfile\.com\/app\/fecommonservice-lottie\/ugc-write-done\/media url reject
+^https?:\/\/www\.dpfile\.com\/picasso\/picasso-qa\/src\/AnswerList\/AnswerList-bundle url reject
+^https?:\/\/www\.dpfile\.com\/sc\/indexpromotion url reject
+^https?:\/\/catfront\.dianping\.com\/api\/metric\?v=\d&p=rn_gcbu_mrn-joy-poidetail url reject
+^https?:\/\/awp-assets\.meituan\.net\/hfe\/fep\/\w+\.json url reject
+^https?:\/\/s3plus\.meituan\.net\/ocean-blk-index\/index\/blk_conf url reject
+^https?:\/\/p\d\.meituan\.net\/nrpresourcevenus\/\w+\.gif url reject-img
+^https?:\/\/p\d\.meituan\.net\/travelcube\/(?!c129a661)\w+\.gif url reject-img
+^https?:\/\/ddplus\.meituan\.net\/v\d\/mss_\w+\/(?>ehc|titansx|ddblue|edfu)\/ url reject
+^https?:\/\/ddplus\.meituan\.net\/v\d\/mss_\w+\/picassovc url script-response-body https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/dianping.js
+
+# ✅ 小象超市 去广告（by fmz200）
+# https://raw.githubusercontent.com/fmz200/wool_scripts/refs/heads/main/QuantumultX/rewrite/rewrite.snippet
+# hostname = portal-portm.meituan.com, mall.meituan.com
+# 广告下发
+^https?:\/\/portal-portm\.meituan\.com\/horn_ios\/mergeRequest url reject-dict
+# 开屏广告
+^https?:\/\/mall\.meituan\.com\/api\/c\/homepage\/splash url reject-dict
+# 首页领券悬浮红包
+^https?:\/\/mall\.meituan\.com\/api\/c\/homepage\/bubble\/operate\/info url reject-dict
+
+# ✅ 拼多多 （by ZenmoFeiShi）
+# https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/Pinduoduo.snippet
+# hostname = api.pinduoduo.com, api.yangkeduo.com, mobile.yangkeduo.com
+^https?:\/\/api\.(pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash url reject
+^https?:\/\/mobile\.yangkeduo\.com\/layer\/app_upgrade_popup url reject
+^https?:\/\/api\.pinduoduo\.com\/api\/aquarius\/hungary\/global\/app_popup url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/flow\/hungary\/window\/global url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/ktt_gateway\/activity\/feeds\/personal_home_page\/ url reject
+^https?:\/\/api\.pinduoduo\.com\/search_hotquery url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/zaire_biz\/chat\/resource\/get_list_data url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/alexa\/goods\/back_up url reject
+^https?:\/\/api\.pinduoduo\.com\/api\/brand-olay\/goods_detail\/bybt_guide url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/engels\/reviews\/require\/append url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/caterham\/v\d\/query\/my_order_group url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/caterham\/v\d\/query\/likes url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/caterham\/v\d\/query\/personal url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/caterham\/v\d\/query\/new_chat_group url reject-dict
+^https?:\/\/api\.yangkeduo\.com\/api\/ant\/entry\/navigate url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/barrow\/query url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/pdd_live_moore_main_lego url reject-dict
+^https?:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render url script-response-body https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/pdd.js
+^https?:\/\/api\.pinduoduo\.com\/api\/alexa\/\w+\/hub url script-response-body https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/pdd.js
+
+# ✅ 买单小程序去广告 （by fmz200）
+# hostname = api.pinduoduo.com
+^https?:\/\/api\.pinduoduo\.com\/api\/ktt_gateway\/activity\/feeds\/personal_home_page\/ url reject
+
+# ✅ 晓晓优选去广告 （by zirawell）
+# https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/App/X/%E6%99%93%E6%99%93%E4%BC%98%E9%80%89/rewrite/xxyx.conf
+# hostname = xxyx-client-api.xiaoxiaoyouxuan.com
+;^https?:\/\/xxyx-client-api\.xiaoxiaoyouxuan\.com\/vajra url reject-dict
+^https?:\/\/xxyx-client-api\.xiaoxiaoyouxuan\.com\/agent_ad url reject
+^https?:\/\/xxyx-client-api\.xiaoxiaoyouxuan\.com\/activity\/show url reject
+^https?:\/\/xxyx-client-api\.xiaoxiaoyouxuan\.com\/client\/urban\/activity\/index\/data\?agentId=12 url reject
+
+# ✅ 平安口袋银行去广告（by zirawell）
+# https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/App/P/%E5%B9%B3%E5%AE%89%E5%8F%A3%E8%A2%8B%E9%93%B6%E8%A1%8C/rewrite/sdb.conf
+# hostname = cdn.sdb.com.cn, rsb.pingan.com.cn
+^https?:\/\/cdn\.sdb\.com\.cn\/app_com\/adversdk url reject-200
+# 屏蔽更新（测试功能）
+^https:\/\/cdn\.sdb\.com\.cn\/ibank\/upgrade\/plugins\/upgradefile\.ios\.simplify url reject-200
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/magic-module-sprite\/general-banner url reject-dict
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/magic-module-sprite\/dialog-normal url reject-dict
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/pb\/pb-plugins-recomend-content url reject-dict
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/pb\/pb-plugins-rec-content-list url reject-dict
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/pb\/pb-plugins-rec-mivideo url reject-dict
+^https?:\/\/cdn\.sdb\.com\.cn\/widget\/nps\/feedback\/ url reject
+^https?:\/\/cdn\.sdb\.com\.cn\/bron-coms\/bron-coms\/material-image url script-response-body https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/sdb.js
+# 信用卡-精彩活动模块
+;^https?:\/\/cdn\.sdb\.com\.cn\/widget\/magic-module-sprite\/four-rectangle-grid url reject-dict
+# 信用卡-平安好物模块
+;^https?:\/\/cdn\.sdb\.com\.cn\/widget\/magic-module-sprite\/goods-module url reject-dict
+^https?:\/\/rsb\.pingan\.com\.cn\/brcp\/stp\/cust\/mobile\/source\/upgrade url reject-dict
+^https?:\/\/rsb\.pingan\.com\.cn\/brcp\/bds\/cust\/ygfz\/up url reject-dict
+
+# ✅ 解除微信链接屏蔽（by ddgksf2013）
+# hostname = weixin110.qq.com, security.wechat.com
+# ^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\? url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/weixin110.js
+
+# ✅ 微信 去除公众号文章底部广告（by NobyDa）
+# hostname = mp.weixin.qq.com
+^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+
+# ✅ 高德地图☆净化（by ddgksf2013）
+# https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/AmapAds.conf
+# hostname = m5.amap.com, m5-zb.amap.com, center.amap.com, amap-aos-info-nogw.amap.com
+
+host-suffix, optimus-ads.amap.com, direct
+
+# > 高德地图_开屏请求@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/aos\/alimama\/splash_screen url reject-200
+# > 高德地图_amdc处理@ddgksf2013
+^http:\/\/amdc\.m\.taobao\.com url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amdc.js
+# > 高德地图_底部tab栏角标@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/message\/notice\/list url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_路线规划下方广告@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/card-service-route-plan\? url reject-dict
+# > 高德地图_首页右中广告@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_附近页面@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_打车页面处理@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_Tip请求@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/boss\/order_web\/\w{8}_information url reject-200
+# > 高德地图_首页底部处理@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_通用广告请求@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/asa\/ads_attribution url reject
+# > 高德地图_开屏广告@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_首页顶部推广@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_我的页面@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_搜索框热词@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_搜索框scene@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/recommend url reject-dict
+# > 高德地图_首页左上角gif@ddgksf2013
+^https?:\/\/.*\.amap\.com\/uploadimg\/\w+\.gif url reject-img
+# > 高德地图_左下天气@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather url reject-dict
+
+# ======= BiliJson 直播间处理 ======= #
+# > BiliBili_哔哩哔哩_屏蔽直播间商品广告浮窗[还有一个域名]@ddgksf2013
+^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v\d\/ecommerce-user\/get_shopping_info\? url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+# > BiliBili_哔哩哔哩_直播去广告@bm7
+^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+
+
+# ======= BiliJson 开屏及隐私 ======= #
+# > BiliBili_哔哩哔哩_应用开屏去广告@bm7
+^https://app.bilibili.com/x/v2/splash/show url reject-dict
+# > BiliBili_哔哩哔哩_应用开屏广告预加载@yjqiang
+^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/list url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+
+
+# ======= BiliJson 高码率仅粉色旧版[V7.65] ======= #
+# > BiliBili_哔哩哔哩_1080P高码率+4K画质[番剧和影视除外]@ddgksf2013
+^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+
+
+# ======= BiliJson Tab页处理 ======= #
+# > BiliBili_哔哩哔哩_屏蔽直播页顶部轮播图@ddgksf2013
+^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-interface\/v2\/index\/feed url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+# > BiliBili_哔哩哔哩_漫画去广告@ddgksf2013
+^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(Flash|ListFlash|GetActivityTab) url reject-dict
+# > BiliBili_哔哩哔哩_推荐去广告@ddgksf2013
+^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+# > BiliBili_哔哩哔哩_追番去广告@ddgksf2013
+^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/bangumi url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+# > BiliBili_哔哩哔哩_观影页面去广告@ddgksf2013
+^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/cinema\/tab\? url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+
+
+# ======= BiliJson 外观处理 ======= #
+# > BiliBili_哔哩哔哩_标签页处理@ddgksf2013
+^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+# > BiliBili_哔哩哔哩_我的页面处理@ddgksf2013
+^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/mine url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+# > BiliBili_哔哩哔哩_屏蔽首页右上活动@ddgksf2013
+^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+# > BiliBili_哔哩哔哩_热搜发现@ddgksf2013
+^https://app.bilibili.com/x/v2/search/square url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+# > BiliBili_哔哩哔哩_填词@ddgksf2013
+^https?:\/\/app\.bilibili\.com\/x\/v\d\/search\/defaultwords url reject-dict
+# > BiliBili_哔哩哔哩_屏蔽DefaultWord@ddgksf2013
+^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/Default url reject-200
+
+
+# ======= BiliProto 处理 ======= #
+# ～ BiliBili_哔哩哔哩_屏蔽DefaultWord@ddgksf2013
+^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/Default url reject
+# ～ BiliBili_哔哩哔哩_搜索去广告@BiliUniverse
+^https?:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll$ url script-response-body https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.19/response.bundle.js
+# ～ BiliBili_哔哩哔哩_交互点赞投票弹幕及会员弹幕@BiliUniverse
+^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/(DmView|DmSegMobile) url script-response-body https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.19/response.bundle.js
+# ～ BiliBili_哔哩哔哩_青少年弹窗@BiliUniverse
+^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus url script-response-body https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.19/response.bundle.js
+# ～ BiliBili_哔哩哔哩_UP主推荐广告[适配ipad端]@BiliUniverse
+^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|TFInfo)$ url script-response-body https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.19/response.bundle.js
+# ～ BiliBili_哔哩哔哩_动态综合页及视频页去广告@BiliUniverse
+^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/Dyn(All|Video)$ url script-response-body https://github.com/BiliUniverse/ADBlock/releases/download/v0.6.19/response.bundle.js
+
+
+# ======= BiliNotAdded ======= #
+# > BiliBili_哔哩哔哩_繁体CC字幕转中文简体[自行启用hostname=aisubtitle.hdslb.com,i0.hdslb.com]@ddgksf2013
+;^https?:\/\/.*\.hdslb\.com\/bfs\/subtitle\/.+\.json url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+# > BiliBili_哔哩哔哩_去除统一设置的皮肤[注释留存]@ddgksf2013
+;^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? url script-response-body https://ddgksf2013.top/scripts/bilibili.ads.js
+
+# ✅ 微博去广告（by zmqcherish&ddgksf2013）
+# hostname = api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com
+# https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/WeiboAds.conf
+# > 微博_分流@ddgksf2013
+host, sdkapp.uve.weibo.com, direct
+host, adstrategy.biz.weibo.com, reject
+
+# ======= 微博国内版 ======= #
+# > 微博_详情页及评论区@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/\d\/statuses\/container_detail url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博_首页信息流可能感兴趣推广@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/\d\/statuses\/container_positive url reject-200
+# > 微博_首页顶部弹窗@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/\d\/push\/info url reject-200
+# > 微博_删除侧栏视频流@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/\d\/ug\/checkin\/stream url jsonjq-response-body '.items |= map(select(.category != "card"))'
+# > 微博_启动感兴趣弹窗@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/.*account\/recommend_interesttags url reject-dict
+# > 微博_首页顶部直播推荐Tab@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/.*\/media_homelist url reject-200
+# > 微博_搜索页默认填充词@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/.*finder\/searchbarchange url reject-200
+# > 微博_AD_Preload@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/\d\/ad\/preload url reject-dict
+# > 微博_首页顶部homeExtend@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/\d\/groups\/allgroups\/v\d url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博_用户推荐弹窗@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/\d\/profile\/recommend_popuser url reject-dict
+# > 微博_开屏广告预加载处理@ddgksf2013
+^https?:\/\/boot.*weibo\.com\/v\d\/ad\/preload url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博_未登陆状态下首页信息流处理@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/\d\/\w{5}\/(statuses_unread_hot_timeline|timeline) url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博_每日一次的开屏广告请求@ddgksf2013
+^https?:\/\/boot.*weibo\.com\/v\d\/ad\/realtime url reject-200
+# > 微博_视频信息处理@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/\d\/video\/tiny_stream_mid_detail url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博_去除底部超话栏表层浮icon及tips@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/.*discovery_home_bottom_getdotinfo url reject-dict
+# > 微博_屏蔽首页左上角每日的弹窗tips@ddgksf2013
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d/push/daily url reject-dict
+# > 微博_屏蔽发现页面搜索框热词@ddgksf2013
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/\w{5}\/cardlist url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博_应用内弹窗广告@ddgksf2013
+^https?:\/\/(preload-click|preload-impression)\.uve\.weibo\.com\/(interface\/wbpullad\/wbpullad_click\.php|wbapplua\/get_wbpullad_log\.lua) url reject
+# > 微博_屏蔽sdkconfig请求@ddgksf2013
+^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkconfig\.php url reject
+# > 微博_Spotlight@ddgksf2013
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/hot\/hours_spotlight url reject-dict
+# > 微博_自定义tab皮肤@zmqcherish
+^https://api.weibo.cn/2/!/client/light_skin url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博_非会员设置tab皮肤@zmqcherish
+^https://new.vip.weibo.cn/littleskin/preview url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博_去广告以及去除各部分推广模块@zmqcherish,@ddgksf2013
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/(searchall|page\?|0flowpage) url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses/(unread_)?friends(/|_)timeline url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/groups/timeline url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses/(container_timeline|unread_hot_timeline|extend|video_mixtimeline|unread_topic_timeline) url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/profile/(me|container_timeline) url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/video/(community_tab|remind_info|tiny_stream_video_list) url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/search/(finder|container_timeline|container_discover) url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/(checkin/show|\!/live/media_homelist|container/get_item) url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/cardlist url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+
+
+# ======= 微博国际版 ======= #
+# > 微博国际版_开屏拦截@ddgksf2013
+host-suffix, api.touch-moblie.com, reject
+# > 微博国际版_帖子下方广告banner@ddgksf2013
+^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=open_app url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博国际版_趋势页热门影片@ddgksf2013
+^https?:\/\/api\.weibo\.cn\/\d\/cardlist\?v_f=.*Weibo_intl url reject-dict
+# > 微博国际版_屏蔽hotsearch@ddgksf2013
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php\?a=hot_search_users url reject-dict
+# > 微博国际版_屏蔽热推荐@ddgksf2013
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/ad\/weibointl\? url reject-dict
+# > 微博国际版_屏蔽searching_info@shiro
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*a=get_searching_info url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_search_info.json
+# > 微博国际版_屏蔽search_topic@shiro
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_search_topic.json
+# > 微博国际版_屏蔽开屏广告@ddgksf2013 
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*get_coopen_ads url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博国际版_屏蔽sdkad@ddgksf2013
+^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua) url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博国际版_趋势顶部Card去广告@ddgksf2013
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*a=trends url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博国际版_屏蔽用户VIP栏@ddgksf2013
+^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=user_center url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+# > 微博国际版_热搜处理@ddgksf2013
+^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=search_topic url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/weibo_json.js
+
+# ✅ 网易云音乐去广告（by RuCu6/ddgksf2013）
+# https://raw.githubusercontent.com/ddgksf2013/Rewrite/refs/heads/master/AdBlock/NeteaseAds.conf
+# https://raw.githubusercontent.com/RuCu6/QuanX/main/Rewrites/Cube/cloudmusic.snippet
+# hostname = interface*.music.163.com
+# ======= 网易云框架区 ======= #
+# > 底部Tab@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/link\/home\/framework\/tab url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 发现页@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/link\/page\/discovery\/resource\/show url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 首推荐页@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/link\/page\/rcmd\/resource\/show url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 软件更新@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/ios\/upgrade\/get url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# ======= 网易云搜索区 ======= #
+# > 搜索默认填词@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/search\/default\/keyword\/list url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 猜你喜欢@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/search\/rcmd\/keyword\/get url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 搜索下方Chart@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/search\/chart\/list url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 搜索Chart@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/search\/chart\/detail url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 相关搜索@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/search\/suggest\/keyword\/get url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 特殊词@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/search\/specialkeyword\/get url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# ======= 网易云推广区 ======= #
+# > 广告加载@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/ad\/loading\/get url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 广告实时@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/ad\/loading\/current url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 广告Get@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/ad\/get url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 插入广告@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/link\/position\/show\/resource url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 歌单顶部广告@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/link\/scene\/show\/resource url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 活动推广@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/content\/activity\/music\/jar\/template\/list url reject-200
+# > 弹窗免费听歌@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/vip\/cashier\/tspopup\/get url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 启动领VIP弹窗@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/sp\/flow\/popup\/query url reject-200
+# ======= 网易云侧栏区 ======= #
+# > 侧栏账户@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/vipnewcenter\/app\/resource\/newaccountpage url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 侧栏推广@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/side-bar\/mini-program\/music-service\/account url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 侧边VIP推广@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/delivery\/deliver url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 侧边浮层@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/delivery\/batch-deliver url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 优惠券@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/vipmall\/couponcfg\/get url reject-200
+# > 侧边兑换黑胶Tips@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/yunbei\/account\/entrance\/get url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 侧边创作福利@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/creator\/musician\/reminder\/message\/get url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# ======= 网易云歌曲区 ======= #
+# > 评论区插入推广@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/batch url script-response-body https://gist.githubusercontent.com/ddgksf2013/4f53b7c6083678df25fecc8ff68b52c4/raw/netease.adblock.js
+# > 活动推广@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/w?eapi\/(resource-exposure\/)?activity url reject-200
+# > 评论区插入推广@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/comment\/feed\/inserted\/resources url reject-200
+# > 购买实体专辑@ddgksf2013
+^https?:\/\/interface(\d)?\.music\.163\.com\/e?api\/resource-exposure\/config url reject-200
+
+# ✅ 网易邮箱大师净化（by ddgksf2013）
+# https://raw.githubusercontent.com/ddgksf2013/Rewrite/refs/heads/master/AdBlock/NeteaseMailAds.conf
+# hostname = dashi.163.com, appconf.mail.163.com, mail.163.com
+
+# ✅ 小红书去广告（by ddgksf2013）
+# https://ddgksf2013.top/rewrite/XiaoHongShuAds.conf
+# hostname = *.xiaohongshu.com
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/notes\/recommend_info\? url reject-200
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/tabfeed url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/video\/save url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/live_photo\/save url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/splash url reject-200
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/notes\? url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/widgets url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/redtube\? url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/videofeed\? url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/feed\? url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/imagefeed url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/splash_config url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/homefeed\? url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/system_service\/config\? url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/hot_list url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/hint url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/homefeed\/categories url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/search\/trending url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/gslb url reject-200
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/httpdns url reject-200
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/(tag\/)?ads url reject-200
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/v\d+\/stateReport url reject-200
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/data\/native\/matrix_switches url reject-200
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/user\/teenager\/status url reject-200
+^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/guide\/home_guide url reject-200
+;^https?:\/\/[a-z]+\.xiaohongshu\.com\/api\/sns\/v\d+\/note\/comment\/list url script-response-body https://ddgksf2013.top/scripts/redbook.ads.js
+
+# ✅ 小红书图片捕获（by xiaomaoJT）
+# hostname = edith.xiaohongshu.com,www.xiaohongshu.com,sns-img-hw.xhscdn.com
+https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/note\/widgets url script-response-body https://raw.githubusercontent.com/xiaomaoJT/QxScript/main/rewrite/boxJS/source/xhs.js
+http:\/\/sns-img-hw\.xhscdn\.com\/.+?imageView2\/2\/w\/(?:10[8-9]\d|1[1-9]\d{2}|[2-9]\d{3,})\/format url script-response-body https://raw.githubusercontent.com/xiaomaoJT/QxScript/main/rewrite/boxJS/source/xhs.js
+
+# ✅ 什么值得买去广告（by ddgksf2013）
+# https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/SmzdmAds.conf
+# hostname = app-api.smzdm.com, *.zdmimg.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com
+# > 搜索框填词@ddgksf2013
+^https?:\/\/s-api.smzdm\.com\/sou\/search_default_keyword url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js
+# > 好价详情页去广告@blackmatrix7
+^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul url reject-200
+# > 好价详情页红包小助手@blackmatrix7
+^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/user_related_modul url reject-200
+# > Wiki@blackmatrix7
+^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul url reject-200
+# > 开屏去广告@blackmatrix7@ddgksf2013
+^https?:\/\/app-api\.smzdm\.com\/util\/loading url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js
+^https?:\/\/.*zdmimg\.com\/cpm\/api\/v\d\/advert_distribution\/get_all_advertise url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js
+# > 首页去广告@blackmatrix7@ddgksf2013
+^https?:\/\/homepage-api\.smzdm\.com\/v3\/home url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js
+# > 好价去广告@blackmatrix7
+^https?:\/\/haojia-api\.smzdm\.com\/home\/list url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js
+# > 好价详情页去广告@blackmatrix7
+^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/article_releated_modul url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js
+# > 百科去广告@blackmatrix7
+^https?:\/\/baike-api\.smzdm\.com\/home_v3\/list url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js
+# > 搜索结果去广告@blackmatrix7
+^https?:\/\/s-api\.smzdm\.com\/sou\/list_v10 url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js
+# > 搜索标签去广告@blackmatrix7
+^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js
+# > 值会员权益中心banner广告@blackmatrix7
+^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/smzdm_json.js
+
+# ✅ 什么值得买 去广告（by fmz200）
+# https://raw.githubusercontent.com/fmz200/wool_scripts/refs/heads/main/QuantumultX/rewrite/chongxie.txt
+# hostname = homepage-api.smzdm.com, haojia-api.smzdm.com, app-api.smzdm.com, user-api.smzdm.com, article-api.smzdm.com, qianbao.smzdm.com
+
+# ✅ 酷我音乐[VIP+净化]（by ddgksf2013）
+# https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# hostname = *.kuwo.cn, *.lrts.me, mc.tencentmusic.com
+# > 通用广告请求@ddgksf2013
+https?:\/\/vip1\.kuwo\.cn\/vip\/activity\/kwMemberDay url reject-200
+https?:\/\/mc\.tencentmusic\.com\/sdk\/ad url reject-200
+https://.*kuwo.cn/AdSystem url reject-200
+https://.*kuwo.cn/openapi/v1/user/freemium/global/text url reject-200
+# > 屏蔽热词@ddgksf2013
+https?:\/\/hotword\.kuwo\.cn\/hotword\.s url reject-200
+# > 通用广告请求@ddgksf2013
+https?:\/\/vip1\.kuwo\.cn\/vip_adv\/ url reject-200
+# > 通用广告请求@ddgksf2013
+https?:\/\/wapi\.kuwo\.cn\/openapi\/v1\/app\/pasterAdvert url reject-200
+# > 应用内弹窗及右下角@ddgksf2013
+^https?:\/\/mobilead\.kuwo\.cn\/ url reject-200
+# > 搜索框处理@ddgksf2013
+https?:\/\/searchrecterm\.kuwo\.cn\/recterm\.s url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 会员页广告@ddgksf2013
+https?:\/\/appi\.kuwo\.cn\/kuwopay\/vip-tab\/page\/cells url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 会员页顶部广告tab@ddgksf2013
+https?:\/\/appi\.kuwo\.cn\/kuwopay\/vip-tab\/setting url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 开屏广告@ddgksf2013
+https?:\/\/rich\.kuwo\.cn\/AdService url reject-200
+# > 数字专辑@ddgksf2013
+^https?:\/\/musicpay\.kuwo\.cn\/music\.pay\?newver url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 听书权限接口1@ddgksf2013
+^https?:\/\/[a-z0-9A-Z]+\.(kuwo|lrts)\.(cn|me)\/a\.p url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 听书权限接口2@ddgksf2013
+^https?:\/\/.*\.kuwo\.cn\/v2\/api\/pay\/vip\/extraVipStatus url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 新版vip接口1@ddgksf2013
+^https?:\/\/vip1\.kuwo\.cn\/vip\/enc\/user\/vip\?op=ui url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 新版vip接口2@ddgksf2013
+^https?:\/\/vip1\.kuwo\.cn\/vip\/v2\/userbase\/vip\?op=get url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 旧版vip接口@ddgksf2013
+^https?:\/\/vip1\.kuwo\.cn\/vip\/v2\/user\/vip\?(uid|op=ui) url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 皮肤解锁@ddgksf2013
+^https?:\/\/vip1\.kuwo\.cn\/vip\/v2\/theme url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 下载接口@ddgksf2013
+^https?:\/\/musicpay\.kuwo\.cn\/music\.pay\?ui url script-request-header https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 我的页面卡片@ddgksf2013
+^https?:\/\/appi.kuwo.cn/kuwopay/personal/cells url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+# > 音乐播放接口@ddgksf2013
+^https:\/\/[a-z0-9A-Z]+\.kuwo\.cn\/mobi\.s\?f=kwxs url script-response-body https://gist.githubusercontent.com/ddgksf2013/0f76e952f0c4a2579932f45a209b40c3/raw/mykkmusic.vip.js
+
+# ✅ 泥巴网站净化（by ddgksf2013）
+# hostname = m.nivod4.tv
+^https?:\/\/.*nivod.*\/($|[0-9a-zA-Z=_/-]+\.html) url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/nivod.js
+
+# ✅ 皮皮虾净化（by ddgksf2013）
+# https://gist.githubusercontent.com/ddgksf2013/bb1dadbd32f67c68772caebcc70b0a33/raw/pipixia.adblock.js
+# hostname = *.pipix.com
+# ======= 去水印 ======= #
+^https?:\/\/.*\.pipix\.com\/bds\/(feed\/stream|comment\/cell_reply|cell\/cell_comment|cell\/detail|ward\/list|user\/favorite|user\/cell_coment|user\/cell_userfeed|user\/publish_list) url script-response-body https://gist.githubusercontent.com/ddgksf2013/bb1dadbd32f67c68772caebcc70b0a33/raw/pipixia.adblock.js
+# ======= 去广告 ======= #
+app_name=super&([\S]*)aid=\d+ url 307 app_name=super_pro&$1aid=1412
+
+# ✅ 航旅纵横 去广告（by ddgksf2013）
+^https?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native url reject
+^https?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$ url script-response-header https://github.com/ddgksf2013/Scripts/raw/master/hanglvzongheng.js
+
+# ✅ 飞常准 去广告（by zirawell）
+# https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/App/F/%E9%A3%9E%E5%B8%B8%E5%87%86/rewrite/variflight.conf
+# hostname = api.cdmcaac.com, app.variflight.com
+^https?:\/\/api\.cdmcaac\.com\/ad url reject
+^https?:\/\/app\.variflight\.com(\/v\d)?\/ad url reject
+^https?:\/\/app\.variflight\.com\/flight\/getIosAdToken url reject
+
+# ✅ 同花顺 去广告（by zirawell）
+# https://raw.githubusercontent.com/zirawell/Ad-Cleaner/main/Adblock/App/T/%E5%90%8C%E8%8A%B1%E9%A1%BA/rewrite/tonghuashun.conf
+# hostname = iphone.ac.qq.com
+^https?:\/\/iphone\.ac\.qq\.com\/.*\/Support\/(getSystemConf|bootScreen) url reject
+
+# ✅ 拦截阿里云盘领取签到福利时的幸运瓶弹窗
+https:\/\/member\.aliyundrive\.com\/v2\/activity\/sign_in_luckyBottle url reject
+
+# ✅ 交管12123（by zirawell）
+# https://raw.githubusercontent.com/zirawell/app_remove_ads/main/Adblock/J/%E4%BA%A4%E7%AE%A112123/rewrite/12123.conf
+# hostname = gab.122.gov.cn
+^https?:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery\/adver url reject
+
+# ✅ WiFi万能钥匙 （by fmz200）
+# https://raw.githubusercontent.com/fmz200/wool_scripts/refs/heads/main/QuantumultX/rewrite/rewrite.snippet
+# hostname = cds.wifi188.com
+# 首页弹窗广告
+^https?:\/\/cds\.wifi188\.com\/feeds\.sec url reject-dict
+
+# ✅ Inoreader: News & RSS reader （by zirawell）
+# hostname = www.inoreader.com
+^https?:\/\/www\.inoreader\.com\/adv\/ url reject
+
+# ✅ 奇点阅读 （by zirawell）
+# hostname = apps.teamair.cn
+^https?:\/\/apps\.teamair\.cn\/app\/version url echo-response application/json echo-response https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Data/qi.json
+
+# ✅ 彩云天气净化（by ddgksf2013）
+# https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/CaiYunAds.conf
+
+# ✅ 知乎净化（by ddgksf2013）
+# https://gist.githubusercontent.com/ddgksf2013/d43179d848586d561dbb968dee93bae8/raw/Zhihu.Adblock.js
+# https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zheye/zheye.snippet
